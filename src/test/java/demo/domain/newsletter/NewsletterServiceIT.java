@@ -40,11 +40,11 @@ public class NewsletterServiceIT {
     @Test
     public void whenCallingFindAllServiceMapsValuesProperly() {
 
-        Newsletter newsletter = Mockito.spy(new Newsletter());
         String name = "John";
         String clientId = "ClientId";
         String lastName = "lastName";
         Email email = new Email("email@example.com");
+        Newsletter newsletter = Mockito.spy(new Newsletter(name,lastName,email));
         when(newsletter.getName()).thenReturn(name);
         when(newsletter.getClientId()).thenReturn(clientId);
         when(newsletter.getEmail()).thenReturn(email);
