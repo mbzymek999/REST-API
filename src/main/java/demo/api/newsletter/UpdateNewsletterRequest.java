@@ -1,6 +1,6 @@
-package demo.api.request;
+package demo.api.newsletter;
 
-import demo.domain.entity.Newsletter;
+import demo.domain.newsletter.Newsletter;
 
 import javax.validation.constraints.Email;
 

@@ -1,19 +1,20 @@
-package demo.domain.entity;
+package demo.domain.newsletter;
 
-import org.hibernate.annotations.GenericGenerator;
+
+import demo.domain.values.Email;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
-@Table(name = "newsletters")
 public class Newsletter {
+
     @Id
-    @GeneratedValue(generator = "inc")
-    @GenericGenerator(name = "inc", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String idClient;
+    private String clientId;
 
     private String name;
 
@@ -21,18 +22,18 @@ public class Newsletter {
 
     private String email;
 
-    public Newsletter(String idClient, String name, String lastName, String email) {
-        this.idClient = idClient;
+    public Newsletter(String name, String lastName, Email email) {
+        this.clientId = generateNewClientId();
         this.name = name;
         this.lastName = lastName;
-        this.email = email;
+        this.email = email.getValue();
     }
 
     public Newsletter() {
     }
 
-    public String getIdClient() {
-        return idClient;
+    public String getClientId() {
+        return clientId;
     }
 
     public String getName() {
@@ -43,8 +44,8 @@ public class Newsletter {
         return lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public Email getEmail() {
+        return new Email(email);
     }
 
     public void setName(String name) {
@@ -57,5 +58,9 @@ public class Newsletter {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    private static String generateNewClientId() {
+        return UUID.randomUUID().toString().replace("-", "").substring(0, 10);
     }
 }

@@ -1,20 +1,20 @@
-package demo.api.dto;
+package demo.api.newsletter;
 
-import demo.domain.entity.Newsletter;
+import demo.domain.newsletter.Newsletter;
 
 
 public class NewsletterDto {
 
-    private String idClient;
-    private String name;
-    private String lastName;
-    private String email;
+    private final String idClient;
+    private final String name;
+    private final String lastName;
+    private final String email;
 
     public NewsletterDto(Newsletter newsletter) {
-        this.idClient = newsletter.getIdClient();
+        this.idClient = newsletter.getClientId();
         this.name = newsletter.getName();
         this.lastName = newsletter.getLastName();
-        this.email = newsletter.getEmail();
+        this.email = newsletter.getEmail().getValue();
     }
 
     public String getIdClient() {
