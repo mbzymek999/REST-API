@@ -14,7 +14,7 @@ public class Email {
     }
 
     private void validate(String value) {
-        if (value.isEmpty()) {
+        if (value == null || value.isEmpty()) {
             throw new BadRequestException("E-mail is empty");
         }
         String regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
