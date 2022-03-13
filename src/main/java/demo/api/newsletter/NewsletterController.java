@@ -23,7 +23,6 @@ class NewsletterController {
         return facade.readByClientId(clientId);
     }
 
-
     @GetMapping("/newsletter")
     List<NewsletterDto> readAllNewsletters() {
         return facade.readAll();

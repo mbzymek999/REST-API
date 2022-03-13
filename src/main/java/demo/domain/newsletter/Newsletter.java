@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name = "newsletters")
 public class Newsletter {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
